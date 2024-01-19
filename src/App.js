@@ -1,8 +1,10 @@
-import './App.css';
+import "./App.css";
+import HomePage from "./Components/HomePage/HomePage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App text-white">
+      <HomePage />
     </div>
   );
 }

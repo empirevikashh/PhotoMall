@@ -1,0 +1,21 @@
+body {
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+  background-image: url("../src/Assets/BackgrounfImage.png");
+  
+  background-size: cover;
+   background-position: center; 
+   background-repeat: no-repeat; 
+  height: 100vh;
+  /* overflow: hidden; */
+}
+
+/* .App {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; 
+} */
