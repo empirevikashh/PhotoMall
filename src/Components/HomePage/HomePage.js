@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import searchIcon from "../../Assets/searchIcon.png";
+import { useDispatch, useSelector } from "react-redux";
+import { addText } from "../../Utils/appSlice";
+import {useFetchImages} from "../CustomHooks/useFetchImages";
 
 const HomePage = () => {
+  const [text, setText] = useState("");
+  const imageData = useFetchImages();
+  const dispatch = useDispatch();
+  const textData = useSelector((store) => store.myStore.searchText);
+  const key = process.env.REACT_APP_API_KEY;
+
+  function handleClick(){
+    dispatch(addText(text));
+    imageData(key,textData);
+  }
+  
   return (
     <div className="homePage ">
       <Header />
@@ -18,12 +32,16 @@ const HomePage = () => {
             <p>&nbsp;&nbsp;│</p>
           </div>
           <input
-            type="text"
+            value={text}
             className="w-[90%] py-3 px-2 focus:outline-none text-white bg-transparent"
             placeholder="Search"
+            onChange={(e) => setText(e.target.value)}
           />
 
-          <button className="font-semibold border-2 border-white px-3 rounded-md">
+          <button
+            className="font-semibold border-2 border-white px-3 rounded-md hover:bg-white hover:text-black transition duration-300 ease-in-out"
+            onClick={handleClick}
+          >
             GO!
           </button>
         </div>

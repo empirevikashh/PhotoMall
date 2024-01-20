@@ -7,8 +7,8 @@ const Header = () => {
             Homepage
         </div>
         <div>
-            <button>Login</button>
-            <button className='ml-4 border-2 border-white p-1 rounded-lg'>Create Account</button>
+            <button className='hover:bg-white hover:text-black transition duration-300 ease-in-out rounded-lg px-1'>Login</button>
+            <button className='ml-4 border-2 border-white p-1 rounded-lg hover:bg-white hover:text-black transition duration-300 ease-in-out'>Create Account</button>
         </div>
     </div>
   )
