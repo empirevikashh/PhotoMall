@@ -1,10 +1,14 @@
+import { Provider } from "react-redux";
 import "./App.css";
-import HomePage from "./Components/HomePage/HomePage";
+import reduxStore from "./Utils/reduxStore";
+import MainContainer from "./Components/MainContainer";
 
 function App() {
   return (
     <div className="App text-white">
-      <HomePage />
+      <Provider store={reduxStore}>
+        <MainContainer/>
+      </Provider>
     </div>
   );
 }
