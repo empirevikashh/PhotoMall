@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App text-white">
       <Provider store={reduxStore}>
-        <MainContainer/>
+        <MainContainer />
       </Provider>
     </div>
   );
