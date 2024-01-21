@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import searchIcon from "../../Assets/searchIcon.png";
 import { useDispatch, useSelector } from "react-redux";
 import { addText } from "../../Utils/appSlice";
-import {useFetchImages} from "../CustomHooks/useFetchImages";
+import { useFetchImages } from "../CustomHooks/useFetchImages";
 
 const HomePage = () => {
   const [text, setText] = useState("");
@@ -12,15 +12,19 @@ const HomePage = () => {
   const textData = useSelector((store) => store.myStore.searchText);
   const key = process.env.REACT_APP_API_KEY;
 
-  function handleClick(){
+  function handleClick() {
     dispatch(addText(text));
-    imageData(key,textData);
+    setText("");
   }
-  
+  useEffect(() => {
+    textData && imageData(key, textData);
+    // eslint-disable-next-line
+  }, [textData]);
+
   return (
     <div className="homePage ">
       <Header />
-      <div className="someText flex justify-center">
+      <div className={"someText flex justify-center " + (textData && "hidden")}>
         <p className=" font-bold text-5xl w-9/12 text-center py-6 my-4">
           Discover over 2,000,000 free Stock Images
         </p>
@@ -33,9 +37,10 @@ const HomePage = () => {
           </div>
           <input
             value={text}
-            className="w-[90%] py-3 px-2 focus:outline-none text-white bg-transparent"
+            className="w-[90%] py-3 px-2 focus:outline-none text-white bg-transparent "
             placeholder="Search"
             onChange={(e) => setText(e.target.value)}
+            onKeyPress={(e) => (e.key === "Enter" ? handleClick() : null)}
           />
 
           <button
@@ -46,9 +51,17 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-      <div className="py-1 px-2 text-sm my-4 w-1/4 m-auto rounded-sm backdrop-blur-sm ring ring-[#8E8CA3] font-semibold">
-        <p className="text-center">Trending: flowers, love, forest, river</p>
-      </div>
+      {textData ? (
+        <div className={"someText flex justify-center "}>
+          <p className=" font-bold text-3xl w-9/12 text-center py-6 my-4">
+            Results: {textData.charAt(0).toUpperCase() + textData.slice(1)}
+          </p>
+        </div>
+      ) : (
+        <div className="py-1 px-2 text-sm my-4 w-1/4 m-auto rounded-sm backdrop-blur-sm ring ring-[#8E8CA3] font-semibold">
+          <p className="text-center">Trending: flowers, forest, river</p>
+        </div>
+      )}
     </div>
   );
 };
