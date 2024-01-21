@@ -47,7 +47,7 @@ const Login = () => {
             .then(() => {
               // Profile updated!
               const { uid, email, displayName } = auth.currentUser;
-              console.log(uid, email, displayName);
+              // console.log(uid, email, displayName);
               dispatch(toggleIsUserLogged());
               dispatch(toggleLoginSignUp());
 
@@ -79,6 +79,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
+          // eslint-disable-next-line
           const user = userCredential.user;
           // console.log(user);
           dispatch(toggleIsUserLogged());

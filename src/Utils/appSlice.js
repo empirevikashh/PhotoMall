@@ -20,7 +20,7 @@ const appSlice = createSlice({
       state.searchText = action.payload;
     },
     addAllImageData: (state, action) => {
-      state.detailImage = [];
+      state.allImageData = [];
       if (action.payload.length > 0) {
         action.payload.forEach((hit) => {
           state.allImageData.push(hit);

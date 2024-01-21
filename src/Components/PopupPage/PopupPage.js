@@ -6,26 +6,26 @@ const PopupPage = () => {
   const detailImage = useSelector((store) => store.myStore.detailImage);
   const dispatch = useDispatch();
 
-  if(!detailImage)return
+  if(!detailImage || detailImage.length <1)return
   return (
-    <div className="fixed w-[80%] bg-white rounded-[8.89px] shadow text-black top-1/2 left-1/2 transform translate-x-[-50%] -translate-y-[50%] transition-all duration-1000 ease-in-out ">
+    <div className="fixed w-[90%] bg-white rounded-[8.89px] shadow text-black top-1/2 left-1/2 transform translate-x-[-50%] -translate-y-[50%] sm-max700:mt-24 sm-max700:absolute sm-max700:w-[95%]">
       <div className="PoppupHead flex justify-between bg-[#F5F5F5] px-6 py-4">
-        <h1> Preview ID: 4877</h1>
+        <h1> Preview ID: {detailImage.id}</h1>
         <h1 className="border border-black px-2 pt-0 pb-1 rounded-md font-semibold cursor-default hover:bg-red-500 hover:scale-90 transition duration-100" onClick={()=>dispatch(addDetailImage(null))}>
           x
         </h1>
       </div>
 
       {/* Middile part */}
-      <div className="midPart px-6 py-4 sm:flex justify-evenly">
-        <div className="w-2/3 mr-2">
+      <div className="midPart px-6 py-4 flex justify-evenly sm-max700:flex-col sm-max700:items-center">
+        <div className="w-2/3 mr-2 sm-max700:w-4/5 sm-max450:w-64 ">
           <img
             src={detailImage.webformatURL}
             alt="clickedPic"
             className="rounded-md w-full"
           />
         </div>
-        <div className="imageDetail w-[16rem]">
+        <div className="imageDetail w-[16rem] sm-max700:w-4/5 sm-max450:w-64">
           <h2 className="font-semibold mb-1">Downlod</h2>
 
           {/* Size box */}

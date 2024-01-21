@@ -23,8 +23,8 @@ const Header = () => {
   };
   const userSignOut = useSelector((store) => store.myStore.isUserLogged);
   return (
-    <div className="header flex justify-between items-center px-6 mx-8 py-4 my-6 rounded-sm backdrop-blur-sm ring ring-[#8E8CA3] font-semibold">
-      <div>Homepage</div>
+    <div className="header flex justify-between items-center px-6 mx-8 py-3 my-6 rounded-sm backdrop-blur-sm ring ring-[#8E8CA3] font-semibold sm-max450:px-1 sm-max450:mx-2 ">
+      <h1 className="text-xl hover:text-pink-600 hover:bg-white rounded-lg px-2 transition duration-300 ease-in-out">PhotoMall</h1>
       <div>
         {userSignOut ? (
           <>
@@ -36,14 +36,15 @@ const Header = () => {
             </button>
             <button
               onClick={handleLogin}
-              className="ml-4 border-2 border-white p-1 rounded-lg hover:bg-white hover:text-black transition duration-300 ease-in-out"
+              className="ml-1 border-2 border-white p-1 rounded-lg hover:bg-white hover:text-black transition duration-300 ease-in-out"
             >
               Create Account
+              {/* <span > Login/SignUp </span> */}
             </button>
           </>
         ) : (
           <div
-            className="ml-4 border-2 border-white p-1 rounded-lg hover:bg-white hover:text-black transition duration-300 ease-in-out"
+            className="border-2 border-white p-1 rounded-lg hover:bg-white hover:text-black transition duration-300 ease-in-out"
             onClick={handleSignOut}
           >
             <button className="font-semibold">Logout</button>
