@@ -6,7 +6,7 @@ export const useFetchImages = ()=> {
   
   const getImages = async (apiKey,textData) => {
     try {
-      const response = await fetch(`https://pixabay.com/api/?key=${apiKey}&q=${textData}&image_type=all&page=2`)
+      const response = await fetch(`https://pixabay.com/api/?key=${apiKey}&q=${textData}&image_type=photo`)
       // fetch(
       //   `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(
       //     textData
