@@ -49,6 +49,7 @@ const Login = () => {
               // eslint-disable-next-line
               const { uid, email, displayName } = auth.currentUser;
               // console.log(uid, email, displayName);
+              console.log("Login");
               dispatch(toggleIsUserLogged());
               dispatch(toggleLoginSignUp());
 
@@ -82,8 +83,8 @@ const Login = () => {
           // Signed in
           // eslint-disable-next-line
           const user = userCredential.user;
-          // console.log(user);
-          dispatch(toggleIsUserLogged());
+          console.log("signin");
+
           dispatch(toggleLoginSignUp());
           setLoading(false);
           setTimeout(() => {

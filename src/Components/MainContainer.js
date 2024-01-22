@@ -6,23 +6,25 @@ import Login from "./LoginSignUp/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import { addAllImageData, toggleIsUserLogged } from "../Utils/appSlice";
+import { toggleIsUserLogged } from "../Utils/appSlice";
 const MainContainer = () => {
   const login = useSelector((store)=>store.myStore.loginSignup);
-  const imageData = useSelector((store)=>store.myStore.allImageData);
-  console.log(imageData);
-
+  
   const dispatch = useDispatch();
-
+  
   // For store user data
   useEffect(() => {
     const unsbscribe = onAuthStateChanged(auth, (user) => {
-       if (user) {
-        dispatch(addAllImageData(imageData));
+      if (user) {
+        
+        // dispatch(addAllImageData(imageData));
+        console.log("Maincontainer");
+
         dispatch(toggleIsUserLogged());
        } 
        else {
        console.log("User dose'nt exist");
+      //  dispatch(toggleIsUserLogged());
        }
      });
  
