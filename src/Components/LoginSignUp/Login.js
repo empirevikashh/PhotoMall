@@ -46,6 +46,7 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
+              // eslint-disable-next-line
               const { uid, email, displayName } = auth.currentUser;
               // console.log(uid, email, displayName);
               dispatch(toggleIsUserLogged());
